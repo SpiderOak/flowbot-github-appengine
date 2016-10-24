@@ -13,10 +13,12 @@ install:
 	mv flowbot-barebones/src flowbot-github/src/flowbot
 	rm -rf flowbot-barebones
 
-local_build:
+build:
+	# Building locally...
 	docker build -t flowbot_github .
 
 run:
+	# Running locally...
 	docker run flowbot_github
 
 deploy:
