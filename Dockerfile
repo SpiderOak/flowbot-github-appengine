@@ -8,14 +8,12 @@ RUN curl -o semaphor.deb https://spideroak.com/releases/semaphor/debian
 RUN dpkg -i semaphor.deb
 RUN apt-get install -f
 
+# Copy over requirements and install
+ADD flowbot/github/requirements.txt /app/requirements.txt
+RUN cd /app; pip install -r requirements.txt
 
 # Copy code
 COPY . /app
-WORKDIR /app/flowbot-github
-
-# Install dependencies
-RUN pip install -r requirements.txt --upgrade
-
 WORKDIR /app/flowbot-github/src
 
 
